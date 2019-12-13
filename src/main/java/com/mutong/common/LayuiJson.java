@@ -9,7 +9,8 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @ApiModel(value = "LayuiJson返回值",description = "用于后端向前端传递参数")
 public class LayuiJson {
-    public static int CODE_OK = 200;
+
+    public static int CODE_OK = 0;
     public static int CODE_SERVER_ERR = 9000;
 
     @ApiModelProperty("操作正常/异常")
@@ -17,7 +18,7 @@ public class LayuiJson {
     @ApiModelProperty("返回状态码")
     private Integer code;
     @ApiModelProperty("提示信息")
-    private String message;
+    private String msg;
     @ApiModelProperty("返回数据")
     private Object data;
 
@@ -30,7 +31,7 @@ public class LayuiJson {
         LayuiJson layuiJson = new LayuiJson();
         layuiJson.setFlag(false);
         layuiJson.setCode(CODE_SERVER_ERR);
-        layuiJson.setMessage(message);
+        layuiJson.setMsg(message);
         return layuiJson;
     }
 
@@ -43,7 +44,7 @@ public class LayuiJson {
         LayuiJson layuiJson = new LayuiJson();
         layuiJson.setFlag(false);
         layuiJson.setCode(code);
-        layuiJson.setMessage(message);
+        layuiJson.setMsg(message);
         return layuiJson;
     }
 
@@ -57,7 +58,7 @@ public class LayuiJson {
         LayuiJson layuiJson = new LayuiJson();
         layuiJson.setFlag(false);
         layuiJson.setCode(code);
-        layuiJson.setMessage(message);
+        layuiJson.setMsg(message);
         layuiJson.setData(data);
         return layuiJson;
     }
@@ -69,7 +70,7 @@ public class LayuiJson {
      */
     public static LayuiJson newInstance(String message){
         LayuiJson layuiJson = new LayuiJson();
-        layuiJson.setMessage(message);
+        layuiJson.setMsg(message);
         layuiJson.setFlag(true);
         layuiJson.setCode(CODE_OK);
         return layuiJson;
@@ -94,7 +95,7 @@ public class LayuiJson {
      */
     public static LayuiJson newInstance(String message,Object data){
         LayuiJson layuiJson = new LayuiJson();
-        layuiJson.setMessage(message);
+        layuiJson.setMsg(message);
         layuiJson.setData(data);
         layuiJson.setFlag(true);
         layuiJson.setCode(CODE_OK);
@@ -107,7 +108,7 @@ public class LayuiJson {
     public static LayuiJson newInstance(Integer code,String message){
         LayuiJson layuiJson = new LayuiJson();
         layuiJson.setCode(code);
-        layuiJson.setMessage(message);
+        layuiJson.setMsg(message);
         layuiJson.setFlag(true);
         return layuiJson;
     }
@@ -120,7 +121,7 @@ public class LayuiJson {
     public static LayuiJson newInstance(Integer code,String message,Object data){
         LayuiJson layuiJson = new LayuiJson();
         layuiJson.setCode(code);
-        layuiJson.setMessage(message);
+        layuiJson.setMsg(message);
         layuiJson.setData(data);
         layuiJson.setFlag(true);
         return layuiJson;
@@ -142,12 +143,12 @@ public class LayuiJson {
         this.code = code;
     }
 
-    public String getMessage() {
-        return message;
+    public String getMsg() {
+        return msg;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 
     public Object getData() {

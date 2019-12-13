@@ -18,8 +18,24 @@ public class BackRouterController {
     return "views/user/login";
   }
 
-  @GetMapping("/admin/page/index")
-  public String index() {
+  @GetMapping("/home/console")
+  public String console() {
     return "views/home/console";
+  }
+
+  @GetMapping("/home/homepage")
+  public String homepage() {
+    return "views/home/homepage1";
+  }
+
+  @GetMapping("/search")
+  public String search(String keywords) {
+    System.out.println(keywords);
+    return "views/template/search";
+  }
+
+  @GetMapping("/index")
+  public String index() {
+    return "views/index";
   }
 }
