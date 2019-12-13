@@ -28,6 +28,11 @@ public class BackRouterController {
     return "views/home/homepage1";
   }
 
+  @GetMapping("/component/button/index")
+  public String button() {
+    return "views/component/button/index";
+  }
+
   @GetMapping("/search")
   public String search(String keywords) {
     System.out.println(keywords);

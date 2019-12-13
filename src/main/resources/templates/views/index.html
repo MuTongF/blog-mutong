@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
   <title>layuiAdmin std - 通用后台管理模板系统（iframe标准版）</title>
@@ -97,13 +97,13 @@
           </div>
           
           <ul class="layui-nav layui-nav-tree" lay-shrink="all" id="LAY-system-side-menu" lay-filter="layadmin-system-side-menu">
-            <li data-name="home" class="layui-nav-item layui-nav-itemed">
+            <li data-name="home" class="layui-nav-item">
               <a href="javascript:;" lay-tips="主页" lay-direction="2">
                 <i class="layui-icon layui-icon-home"></i>
                 <cite>主页</cite>
               </a>
               <dl class="layui-nav-child">
-                <dd data-name="console" class="layui-this">
+                <dd data-name="console" class="">
                   <a lay-href="back/home/console">控制台</a>
                 </dd>
                 <dd data-name="console">
@@ -115,7 +115,7 @@
               </dl>
             </li>
             <li data-name="component" class="layui-nav-item">
-              <a href="javascript:;" lay-tips="组件" lay-direction="2">
+              <a href="javascript:;" lay-tips="组件" lay-direction="3">
                 <i class="layui-icon layui-icon-component"></i>
                 <cite>组件</cite>
               </a>
@@ -132,7 +132,7 @@
                   </dl>
                 </dd>
                 <dd data-name="button">
-                  <a lay-href="component/button/index.html">按钮</a>
+                  <a lay-href="back/component/button/index">按钮</a>
                 </dd>
                 <dd data-name="form">
                   <a href="javascript:;">表单</a>
@@ -463,7 +463,8 @@
       <!-- 主体内容 -->
       <div class="layui-body" id="LAY_app_body">
         <div class="layadmin-tabsbody-item layui-show">
-          <iframe src="/blog/back/home/console" frameborder="0"
+          <iframe src="/blog/back/home/console" th:src="@{/back/home/console}"
+                  lay-data="back/home/console" frameborder="0"
                   class="layadmin-iframe"></iframe>
         </div>
       </div>
@@ -479,7 +480,31 @@
     base: '../layuiadmin/' //静态资源所在路径
   }).extend({
     index: 'lib/index' //主入口模块
-  }).use('index');
+  }).use('index', function () {
+    var $ = layui.$;
+    checkedNav();
+    $("#LAY_app_tabsheader").click(function () {
+      checkedNav();
+    })
+
+    function checkedNav() {
+      var href_url = $(".layadmin-iframe");
+      var url = href_url.attr("lay-data");
+      /*查找左侧的按钮*/
+      var nav = $("[lay-href='" + url + "']");
+      /*查找他的父级菜单*/
+      var par = nav.parents(".layui-nav-item");
+      console.log(par.html());
+      nav.addClass("layui-this");
+      /*关闭其他菜单*/
+      $(".layui-nav-item").removeClass("layui-nav-itemed");
+      par.addClass("layui-nav-itemed");
+
+    }
+
+  });
+
+
   </script>
   
 </body>
