@@ -1,6 +1,7 @@
 package com.mutong.controller.router;
 
 import io.swagger.annotations.Api;
+import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class BackRouterController {
 
   @GetMapping("/login")
-  public String login() {
+  public String login(HttpSession session) {
+    /*清除session*/
+    session.invalidate();
     return "views/user/login";
   }
 

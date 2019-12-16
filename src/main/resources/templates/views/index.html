@@ -5,11 +5,17 @@
 <head>
   <meta charset="utf-8">
   <title>layuiAdmin std - 通用后台管理模板系统（iframe标准版）</title>
+  <link rel="shortcut icon" th:href="@{/favicon.ico}"/>
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <link rel="stylesheet" href="../layuiadmin/layui/css/layui.css" media="all">
   <link rel="stylesheet" href="../layuiadmin/style/admin.css" media="all">
+  <style>
+    .layui-nav.layui-layout-right {
+      margin-right: 20px;
+    }
+  </style>
   
   <script>
   /^http(s*):\/\//.test(location.href) || alert('请先部署到 localhost 下再访问');
@@ -78,14 +84,16 @@
               <hr>
               <dd layadmin-event="logout" style="text-align: center;"><a>退出</a></dd>
             </dl>
+
           </li>
-          
-          <li class="layui-nav-item layui-hide-xs" lay-unselect>
+
+
+          <!--<li class="layui-nav-item layui-hide-xs" lay-unselect>
             <a href="javascript:;" layadmin-event="about"><i class="layui-icon layui-icon-more-vertical"></i></a>
           </li>
           <li class="layui-nav-item layui-show-xs-inline-block layui-hide-sm" lay-unselect>
             <a href="javascript:;" layadmin-event="more"><i class="layui-icon layui-icon-more-vertical"></i></a>
-          </li>
+          </li>-->
         </ul>
       </div>
       
@@ -97,13 +105,13 @@
           </div>
           
           <ul class="layui-nav layui-nav-tree" lay-shrink="all" id="LAY-system-side-menu" lay-filter="layadmin-system-side-menu">
-            <li data-name="home" class="layui-nav-item">
+            <li data-name="console" class="layui-nav-item">
               <a href="javascript:;" lay-tips="主页" lay-direction="2">
                 <i class="layui-icon layui-icon-home"></i>
                 <cite>主页</cite>
               </a>
               <dl class="layui-nav-child">
-                <dd data-name="console" class="">
+                <dd data-name="console">
                   <a lay-href="back/home/console">控制台</a>
                 </dd>
                 <dd data-name="console">
@@ -487,18 +495,25 @@
       checkedNav();
     })
 
+
     function checkedNav() {
       var href_url = $(".layadmin-iframe");
       var url = href_url.attr("lay-data");
       /*查找左侧的按钮*/
       var nav = $("[lay-href='" + url + "']");
-      /*查找他的父级菜单*/
-      var par = nav.parents(".layui-nav-item");
-      console.log(par.html());
+      $(".layui-this").removeClass("layui-this");
       nav.addClass("layui-this");
-      /*关闭其他菜单*/
-      $(".layui-nav-item").removeClass("layui-nav-itemed");
-      par.addClass("layui-nav-itemed");
+
+      setTimeout(function () {
+        /*关闭其他菜单*/
+        $(".layui-nav-itemed").removeClass("layui-nav-itemed");
+        /*打开最高层*/
+        $(".layui-this").parents("li").addClass("layui-nav-itemed");
+        setTimeout(function () {
+          /*打开中间层*/
+          $(".layui-this").parents("dd").addClass("layui-nav-itemed");
+        }, 10)
+      }, 10);
 
     }
 
