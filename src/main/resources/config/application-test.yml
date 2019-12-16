@@ -30,8 +30,8 @@ myproject:
 swagger:
   enabled: true #swagger是否开启
 upload:
-  filePath: /usr/mutong/upload/image/  #图片上传存放路径
-  ueditorPath: /usr/mutong/upload/ueditor/ #ueditor文件存放位置
+  filePath: /usr/webapp/upload/image/  #图片上传存放路径
+  ueditorPath: /usr/webapp/upload/ueditor/ #ueditor文件存放位置
 
 
 
