@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>nav</title>
+</head>
+<body>
+<!--头部导航-->
+<!-- header -->
+
+<header role="header" th:fragment="header">
+  <div class="container">
+
+    <!-- logo -->
+
+    <h1><a href="index.html" th:href="@{/}" title="avana LLC"><img src="blog/images/logo.png"
+                                                                   title="沐瞳的博客"
+                                                                   alt="沐瞳的博客"/></a></h1>
+
+    <!-- logo -->
+
+    <!-- nav -->
+
+    <nav role="header-nav" class="navy">
+      <ul>
+        <li class="nav-active" th:class="${active eq '首页'}?'nav-active':''">
+          <a href="/"
+             th:href="@{/}"
+             title="Work">首页</a>
+        </li>
+
+        <li th:class="${active eq '关于我'}?'nav-active':''">
+          <a href="about" th:href="@{/about}"
+             title="About">关于我</a></li>
+
+        <li th:class="${active eq '博客'}?'nav-active':''">
+          <a href="blog" th:href="@{/blog}"
+             title="Blog">博客</a></li>
+
+        <li th:class="${active eq '联系我'}?'nav-active':''">
+          <a href="contact" th:href="@{/contact}"
+             title="Contact">联系我</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- nav -->
+
+  </div>
+</header>
+
+<!-- footer -->
+
+<footer role="footer" th:fragment="footer">
+
+  <!-- logo -->
+
+  <h1><a href="index.html" th:href="@{/}" title="avana LLC"><img src="blog/images/logo.png"
+                                                                 title="沐瞳的博客"
+                                                                 alt="沐瞳的博客"/></a></h1>
+
+  <!-- logo -->
+
+  <!-- nav -->
+
+  <nav role="footer-nav">
+    <ul>
+      <li><a href="#" th:href="@{/}" title="Work">首页</a></li>
+      <li><a href="about.html" th:href="@{/about}" title="About">关于我</a></li>
+      <li><a href="blog.html" th:href="@{/blog}" title="Blog">博客</a></li>
+      <li><a href="contact.html" th:href="@{/contact}" title="Contact">联系我</a></li>
+    </ul>
+  </nav>
+
+
+  <ul role="social-icons">
+    <li><a href="http://www.github.com/MuTongF" target="_blank" title="Github"><i
+        class="fa fa-github"
+        aria-hidden="true"></i></a>
+    </li>
+    <li><a href="http://weibo.com/u/3247776781" target="_blank" title="微博"><i class="fa fa-weibo"
+                                                                              aria-hidden="true"></i></a>
+    </li>
+    <li><a href="https://space.bilibili.com/27404357" title="BiLiBiLi" target="_blank">
+      <img th:src="@{/blog/images/bilibili.png}" width="30"
+           height="30"
+           style="margin-bottom:5px;display: inline-block"/></a>
+    </li>
+
+  </ul>
+  <p class="copy-right">&copy; 2019 avana LLC.. 沐瞳</p>
+</footer>
+
+
+</body>
+</html>

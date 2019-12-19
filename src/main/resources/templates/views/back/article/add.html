@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <title>发布/编辑文章</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link rel="stylesheet" href="../../../layuiadmin/layui/css/layui.css"
+        th:href="@{/layuiadmin/layui/css/layui.css}" media="all">
+  <link rel="stylesheet" href="../../../layuiadmin/style/admin.css"
+        th:href="@{/layuiadmin/style/admin.css}" media="all">
+</head>
+<body>
+
+<div class="layui-fluid">
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-md12">
+      <div class="layui-card">
+        <div class="layui-card-header">发布文章</div>
+        <div class="layui-card-body" pad15>
+
+          <div class="layui-form" lay-filter="">
+
+            <div class="layui-form-item">
+              <div class="layui-inline">
+                <label class="layui-form-label">分类</label>
+                <div class="layui-input-inline">
+                  <select name="role" lay-verify="">
+                    <option value="0">前端</option>
+                    <option value="1" selected>后端</option>
+                  </select>
+                </div>
+              </div>
+              <div class="layui-inline">
+                <label class="layui-form-label">标签</label>
+                <div class="layui-input-inline">
+                  <select name="tag" lay-verify="">
+                    <option value="0">美食</option>
+                    <option value="1" selected>页面</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">评论功能</label>
+              <div class="layui-input-inline">
+                <select name="role" lay-verify="">
+                  <option value="0">关闭</option>
+                  <option value="1" selected>开启</option>
+                </select>
+              </div>
+              <div class="layui-form-mid layui-word-aux">关闭以后不能评论</div>
+            </div>
+
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">封面</label>
+              <div class="layui-input-inline">
+                <input name="avatar" lay-verify="required" id="LAY_avatarSrc" placeholder="图片地址"
+                       th:value="${(session.user!=null&&session.user.avatar!=null)?session.user.avatar:''}"
+                       class="layui-input">
+              </div>
+              <div class="layui-input-inline layui-btn-container" style="width: auto;">
+                <button type="button" class="layui-btn layui-btn-primary" id="LAY_avatarUpload">
+                  <i class="layui-icon">&#xe67c;</i>上传图片
+                </button>
+                <button class="layui-btn layui-btn-primary" layadmin-event="avartatPreview">查看图片
+                </button>
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">标题</label>
+              <div class="layui-input-block">
+                <input type="text" name="authorName" value="贤心"
+                       th:value="${(session.user!=null&&session.user.authorName!=null)?session.user.authorName:''}"
+                       lay-verify="authorName"
+                       autocomplete="off" placeholder="请输入标题" class="layui-input">
+              </div>
+            </div>
+
+            <div class="layui-form-item layui-form-text">
+              <label class="layui-form-label">内容</label>
+              <div class="layui-input-block">
+                  <textarea name="introduce" placeholder="请输入内容"
+                            th:text="${(session.user!=null&&session.user.introduce!=null)?session.user.introduce:''}"
+                            class="layui-textarea"></textarea>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="setmyinfo">发布文章</button>
+                <button type="button" class="layui-btn layui-btn-primary">保存草稿</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../../layuiadmin/layui/layui.js" th:src="@{/layuiadmin/layui/layui.js}"></script>
+<script>
+  layui.config({
+    base: '../../layuiadmin/' //静态资源所在路径
+  }).extend({
+    index: 'lib/index' //主入口模块
+  }).use(['index', 'set'], function () {
+
+  });
+
+</script>
+</body>
+</html>

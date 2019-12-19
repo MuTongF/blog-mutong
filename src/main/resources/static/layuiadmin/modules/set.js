@@ -28,10 +28,10 @@
     }
   }), a.events.avartatPreview = function (t) {
     var i = r.val();
-    if (!i.substring(0, 6) == "http://") {
+    if (!i.startsWith("http")) {
       i = baseUrl + i;
     }
-    if (i.st) {
+    if (i) {
       e.photos({
         photos: {title: "查看头像", data: [{src: i}]},
         shade: .01,

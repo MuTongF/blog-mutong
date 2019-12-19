@@ -1,18 +1,17 @@
 package com.mutong.interceptor;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 @Component
 public class SessionInterceptor implements HandlerInterceptor {
     // 目标方法执行之前
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        Object admin = request.getSession().getAttribute("admin");
+        Object admin = request.getSession().getAttribute("user");
         // 如果获取的request的session中的loginUser参数为空（未登录），就返回登录页，否则放行访问
         if (null == admin) {
             // 未登录，给出错误信息，

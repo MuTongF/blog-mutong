@@ -125,8 +125,9 @@
         }, delResize: function () {
           this.resize("off")
         }, closeThisTabs: function () {
+          
           P.tabsPage.index && a(z).eq(P.tabsPage.index).find(
-              ".layui-tab-close").trigger("click")
+              ".layui-tab-close").trigger("click");
         }, fullScreen: function () {
           var e = document.documentElement,
               a = e.requestFullScreen || e.webkitRequestFullScreen
@@ -256,7 +257,8 @@
           F.rollPage()
         }, closeThisTabs: function () {
           var e = parent === self ? P : parent.layui.admin;
-          e.closeThisTabs()
+          e.closeThisTabs();
+
         }, closeOtherTabs: function (e) {
           var i = "LAY-system-pagetabs-remove";
           "all" === e ? (a(z + ":gt(0)").remove(), a(m).find("." + b
@@ -348,6 +350,12 @@
     P.tabsPage.elem = e;
     var n = parent === self ? layui : top.layui;
     n.index.openTabsPage(i, t || e.text())
+    $("*[lay-attr]").click(function () {
+      addMao($(this).attr("lay-attr"))
+    });
+    $(".layui-tab-close").click(function () {
+      cleanMao();
+    });
   }), o.on("click", "*[layadmin-event]", function () {
     var e = a(this), i = e.attr("layadmin-event");
     F[i] && F[i].call(this, e)

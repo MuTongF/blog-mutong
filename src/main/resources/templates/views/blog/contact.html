@@ -1,54 +1,19 @@
 <!DOCTYPE HTML>
 
- <html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-    <head>
+<!--引入公共的js和css-->
+<head th:replace="common/layout :: common_head(~{::style},~{::link})">
+  <!--在此引入css样式表-->
+  <link href="css/set2.css" th:href="@{/blog/css/effects/set2.css}" rel="stylesheet"
+        type="text/css">
+  <link href="css/normalize.css" th:href="@{/blog/css/effects/normalize.css}" rel="stylesheet"
+        type="text/css">
+  <!--在此写入style-->
+  <style>
 
-    	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-
-        <meta charset="utf-8">
-
-        <!-- Description, Keywords and Author -->
-
-        <meta name="description" content="">
-
-        <meta name="author" content="">
-
-        
-
-        <title>:: avana LLC | Contact ::</title>
-
-		<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-
-
-
-        <!-- style -->
-
-        <link href="css/style.css" rel="stylesheet" type="text/css">
-
-        <!-- style -->
-
-        <!-- bootstrap -->
-
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-
-        <!-- responsive -->
-
-        <link href="css/responsive.css" rel="stylesheet" type="text/css">
-
-        <!-- font-awesome -->
-
-        <link href="css/fonts.css" rel="stylesheet" type="text/css">
-
-        <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
-
-        <!-- font-awesome -->
-
-        <link href="css/set2.css" rel="stylesheet" type="text/css">
-
-        <link href="css/normalize.css" rel="stylesheet" type="text/css">
-
-	</head>
+  </style>
+</head>
 
 
 
@@ -58,45 +23,8 @@
 
     	<!-- header -->
 
-        	<header role="header">
-
-            	<div class="container">
-
-                	<!-- logo -->
-
-                    	<h1>
-
-                        	<a href="index.html" title="avana LLC"><img src="images/logo.png" title="avana LLC" alt="avana LLC"/></a>
-
-                        </h1>
-
-                    <!-- logo -->
-
-                    <!-- nav -->
-
-                    <nav role="header-nav" class="navy">
-
-                        <ul>
-
-                            <li><a href="index.html" title="Work">Work</a></li>
-
-                            <li><a href="about.html" title="About">About</a></li>
-
-                            <li><a href="blog.html" title="Blog">Blog</a></li>
-
-                            <li class="nav-active"><a href="contact.html" title="Contact">Contact</a></li>
-
-                        </ul>
-
-                    </nav>
-
-                    <!-- nav -->
-
-                </div>
-
-            </header>
-
-        <!-- header -->
+      <header th:replace="common/nav::header(active='联系我')"></header>
+      <!-- header -->
 
         <!-- main -->
 
@@ -118,7 +46,9 @@
 
                         </header>
 
-                        <p><a href="tel:8197654321"><i class="fa fa-phone" aria-hidden="true"></i> +8197654321</a><a href="mailto:contact@avana.com"><i class="fa fa-envelope" aria-hidden="true"></i> contact@avana.com</a></p>
+                    <p><a href="mailto:mutongf@gmail.com"><i class="fa fa-envelope"
+                                                             aria-hidden="true"></i>
+                      mutongf@gmail.com</a></p>
 
                     </article>
 
@@ -154,13 +84,13 @@
 
                                 <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
 
-                                <input  name="name" id="name" type="text" placeholder="Whats your name">
+                                  <input name="name" id="name" type="text" placeholder="你的姓名">
 
                                 </div>
 
                                 <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
 
-                                <input  name="email" id="email" type="email"  placeholder="Whats your email">
+                                  <input name="email" id="email" type="email" placeholder="你的邮箱">
 
                                 </div>
 
@@ -168,11 +98,12 @@
 
                             <div class="clearfix"></div>
 
-                            <textarea name="comments" id="comments" cols="" rows="" placeholder="Whats in your mind"></textarea>
+                                  <textarea name="comments" id="comments" cols="" rows=""
+                                            placeholder="你想说的"></textarea>
 
                             <div class="clearfix"></div>
 
-                            <input name="" type="submit" value="Send email">
+                                  <input name="" type="submit" value="发送">
 
                             <div id="simple-msg"></div>
 
@@ -194,83 +125,8 @@
 
         <!-- footer -->
 
-        <footer role="footer">
-
-            <!-- logo -->
-
-                <h1>
-
-                    <a href="index.html" title="avana LLC"><img src="images/logo.png" title="avana LLC" alt="avana LLC"/></a>
-
-                </h1>
-
-            <!-- logo -->
-
-            <!-- nav -->
-
-            <nav role="footer-nav">
-
-            	<ul>
-
-                	<li><a href="index.html" title="Work">Work</a></li>
-
-                    <li><a href="about.html" title="About">About</a></li>
-
-                    <li><a href="blog.html" title="Blog">Blog</a></li>
-
-                    <li><a href="contact.html" title="Contact">Contact</a></li>
-
-                </ul>
-
-            </nav>
-
-            <!-- nav -->
-
-            <ul role="social-icons">
-
-            	<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-
-                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-
-                <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-
-                <li><a href="#"><i class="fa fa-flickr" aria-hidden="true"></i></a></li>
-
-            </ul>
-
-            <p class="copy-right">&copy; 2015  avana LLC.. All rights Resved</p>
-
-        </footer>
-
-        <!-- footer -->
-
-    
-
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-
-        <script src="js/jquery.min.js" type="text/javascript"></script>
-
-        <!-- custom -->
-
-		
-
-        <script src="js/custom.js" type="text/javascript"></script>
-
-		<script src="js/jquery.contact.js" type="text/javascript"></script>
-
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script> 
-
-		<script src="js/maps.js" type="text/javascript"></script>
-
-        <script src="js/nav.js" type="text/javascript"></script>
-
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-
-        <script src="js/bootstrap.min.js" type="text/javascript"></script>
-
-        <!-- jquery.countdown -->
-
-        <script src="js/html5shiv.js" type="text/javascript"></script>
+      <footer th:replace="common/nav::footer"></footer>
+      <!-- footer -->
 
     </body>
 

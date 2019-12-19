@@ -3,6 +3,7 @@ package com.mutong.controller.router;
 import io.swagger.annotations.Api;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -26,15 +27,46 @@ public class BackRouterController {
     return "views/home/console";
   }
 
-  @GetMapping("/home/homepage")
-  public String homepage() {
-    return "views/home/homepage1";
+  @GetMapping("/article/list")
+  public String articleList() {
+    return "views/back/article/list";
   }
 
-  @GetMapping("/component/button/index")
-  public String button() {
-    return "views/component/button/index";
+  @GetMapping("/article/add")
+  public String addArtPage(Integer id, Model model) {
+    return "views/back/article/add";
   }
+
+  @GetMapping("/article/comment")
+  public String comment() {
+    return "views/back/article/comment";
+  }
+
+  @GetMapping("/article/tags")
+  public String tags() {
+    return "views/back/article/tags";
+  }
+
+  @GetMapping("/user/set/info")
+  public String homepage() {
+    return "views/set/user/info";
+  }
+
+  @GetMapping("/user/set/password")
+  public String updatePassword() {
+    return "views/set/user/password";
+  }
+
+  @GetMapping("/set/system/email")
+  public String email() {
+    return "views/set/system/email";
+  }
+
+  @GetMapping("/set/system/website")
+  public String website() {
+    return "views/set/system/website";
+  }
+
 
   @GetMapping("/search")
   public String search(String keywords) {

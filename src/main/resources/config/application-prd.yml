@@ -1,15 +1,5 @@
 ###########################################生产环境
-server: ###### 服务器配置
-  port: 80  #端口号
-  servlet:
-    context-path: /mutong #项目路径
-
-spring: ###### 数据库配置
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
-    username: root
-    password: root
+spring:
   thymeleaf:  ###### thymeleaf配置
     cache: false
     suffix: .html
@@ -25,11 +15,9 @@ logging:  #####日志
     root: info #打印等级
   config: classpath:config/logback/logback-prd.xml
 #变量
-myproject:
-  projectName:  项目名
 swagger:
   enabled: false #swagger是否开启
 upload:
-  filePath: /usr/mutong/upload/image/  #图片上传存放路径
-  ueditorPath: /usr/mutong/upload/ueditor/ #ueditor文件存放位置
+  filePath: /usr/webapp/upload/image/  #图片上传存放路径
+  ueditorPath: /usr/webapp/upload/ueditor/ #ueditor文件存放位置
 

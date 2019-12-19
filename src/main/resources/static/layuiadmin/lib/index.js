@@ -5,6 +5,23 @@ var arrs = name.split("/");
 var hostName = arrs[1];
 /*如果没有项目名可以不用加arrs[1]*/
 var baseUrl = "http://" + host + "/" + hostName;
+
+function addMao(i) {
+  var href = window.location.href;
+  var end = href.indexOf("#");
+  var rurl = href.substring(0, end);
+  //设置新的锚点
+  window.location.href = rurl + "#" + i;
+}
+
+function cleanMao() {
+  var href = window.location.href;
+  var end = href.indexOf("#");
+  var rurl = href.substring(0, end);
+  //清除锚点
+  window.location.href = rurl;
+}
+
 ;layui.extend({setter: "config", admin: "lib/admin", view: "lib/view"}).define(
     ["setter", "admin"], function (a) {
 

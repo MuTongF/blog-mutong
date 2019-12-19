@@ -127,6 +127,16 @@ public class LayuiJson {
         return layuiJson;
     }
 
+    @Override
+    public String toString() {
+        return "LayuiJson{" +
+            "flag=" + flag +
+            ", code=" + code +
+            ", msg='" + msg + '\'' +
+            ", data=" + data +
+            '}';
+    }
+
     public boolean isFlag() {
         return flag;
     }

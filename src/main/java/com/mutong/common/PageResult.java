@@ -20,7 +20,11 @@ public class PageResult<T> {
     /*查询到的数据*/
     private List<T> data;
 
-    public static PageResult newInstance(Integer count, List list) {
+    public static PageResult newInstance(long count, List list) {
+        return new PageResult(0, count, list);
+    }
+
+    public PageResult New(long count, List list) {
         return new PageResult(0, count, list);
     }
 
@@ -29,7 +33,7 @@ public class PageResult<T> {
     }
 
 
-    public PageResult(Integer code, Integer count, List<T> list) {
+    public PageResult(Integer code, long count, List<T> list) {
         super();
         this.code = code;
         this.count = count;
