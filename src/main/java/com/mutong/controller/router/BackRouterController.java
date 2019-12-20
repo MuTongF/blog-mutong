@@ -47,6 +47,11 @@ public class BackRouterController {
     return "views/back/article/tags";
   }
 
+  @GetMapping("/test/layui_md")
+  public String layuiMd() {
+    return "views/back/test/layui_md";
+  }
+
   @GetMapping("/user/set/info")
   public String homepage() {
     return "views/set/user/info";

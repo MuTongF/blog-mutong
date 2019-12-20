@@ -1,0 +1,25 @@
+###########################################开发环境
+spring:
+  thymeleaf:  ###### thymeleaf配置
+    cache: false
+    suffix: .html
+
+mybatis:  ###### mybatis
+  mapper-locations: classpath*:***/dao/**/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #  在控制台打印sql语句
+
+logging:  #####日志
+  path: logs  #存放位置
+  level:
+    root: info  #打印等级
+  config: classpath:config/logback/logback-dev.xml
+#变量
+swagger:
+  enabled: true #swagger是否开启
+upload:
+  filePath: /usr/webapp/upload/image/  #图片上传存放路径
+  ueditorPath: /usr/webapp/upload/ueditor/ #ueditor文件存放位置
+
+
+

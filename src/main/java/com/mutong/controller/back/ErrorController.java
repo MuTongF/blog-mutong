@@ -4,13 +4,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("error")
+@RequestMapping("/error")
 public class ErrorController {
 
-  @RequestMapping({"", "/"})
+  /*@RequestMapping({"","/"})
   public String error() {
     return "error/error";
-  }
+  }*/
 
   @RequestMapping("/404")
   public String error_404() {
