@@ -2,6 +2,7 @@ package com.mutong.service.impl;
 
 import com.mutong.common.LayuiJson;
 import com.mutong.service.UploadService;
+import com.mutong.util.RandomUtil;
 import com.mutong.util.TimeUtil;
 import java.io.File;
 import java.io.IOException;
@@ -32,7 +33,7 @@ public class UploadServiceImpl implements UploadService {
             targetFile.mkdirs();
         }
 
-        String name = System.currentTimeMillis() + imgType;
+        String name = RandomUtil.getNumberRandom(4) + System.currentTimeMillis() + imgType;
         File imgFile = new File(filePath + name);
 
 
