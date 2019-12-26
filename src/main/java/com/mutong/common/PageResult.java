@@ -25,7 +25,9 @@ public class PageResult<T> {
     }
 
     public PageResult New(long count, List list) {
-        return new PageResult(0, count, list);
+        return new PageResult((count == 0) ? 201 : 0, (count == 0) ? "没有数据 (๑•̀ㅂ•́)و✧" : "",
+            this.page,
+            this.limit, count, list);
     }
 
     public static PageResult newErrorInstance(Integer code, String msg) {
@@ -48,6 +50,9 @@ public class PageResult<T> {
         this.limit = limit;
         this.count = count;
         this.data = list;
+    }
+
+    public PageResult() {
     }
 
     public Integer getCode() {

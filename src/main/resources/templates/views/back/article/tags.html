@@ -29,7 +29,7 @@
                 class="layui-icon layui-icon-delete"></i>删除</a>
           </script>
           <script type="text/html" id="toolbar-tags">
-            <button class="layui-btn layuiadmin-btn-tags" data-type="add">添加</button>
+            <button class="layui-btn layuiadmin-btn-tags" data-type="addTag">添加</button>
           </script>
         </div>
         <div class="layui-col-md6">
@@ -42,7 +42,7 @@
                 class="layui-icon layui-icon-delete"></i>删除</a>
           </script>
           <script type="text/html" id="toolbar-category">
-            <button class="layui-btn layuiadmin-btn-tags" data-type="add">添加</button>
+            <button class="layui-btn layuiadmin-btn-tags" data-type="addCategory">添加</button>
           </script>
         </div>
       </div>
@@ -58,35 +58,8 @@
     base: '../../layuiadmin/' //静态资源所在路径
   }).extend({
     index: 'lib/index' //主入口模块
-  }).use(['index', 'contlist', 'table'], function () {
+  }).use(['index', 'tag'], function () {
 
-    var table = layui.table;
-    var $ = layui.$, active = {
-      add: function () {
-        layer.open({
-          type: 2
-          , title: '添加分类'
-          , content: 'tagsform.html'
-          , area: ['450px', '200px']
-          , btn: ['确定', '取消']
-          , yes: function (index, layero) {
-            var othis = layero.find('iframe').contents().find("#layuiadmin-app-form-tags")
-                , tags = othis.find('input[name="tags"]').val();
-
-            if (!tags.replace(/\s/g, '')) {
-              return;
-            }
-
-            table.reload('LAY-app-content-tags');
-            layer.close(index);
-          }
-        });
-      }
-    }
-    $('.layui-btn.layuiadmin-btn-tags').on('click', function () {
-      var type = $(this).data('type');
-      active[type] ? active[type].call(this) : '';
-    });
   });
 </script>
 </body>

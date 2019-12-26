@@ -22,6 +22,14 @@ function cleanMao() {
   window.location.href = rurl;
 }
 
+function success_msg(msg) {
+  layer.msg(msg, {icon: 1, time: 1000})
+}
+
+function error_msg(msg) {
+  layer.msg(msg, {icon: 2, time: 1000})
+}
+
 ;layui.extend({setter: "config", admin: "lib/admin", view: "lib/view"}).define(
     ["setter", "admin"], function (a) {
 
