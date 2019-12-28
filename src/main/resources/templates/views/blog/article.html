@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/layout :: common_head(~{::style},~{::link})">
+
+  <!--code-->
+  <link rel="stylesheet" href="css/style.css" th:href="@{/blog/css/xcode.min.css}" type="text/css" media="all"/>
+  <link rel="stylesheet" href="css/style.css" th:href="@{/blog/css/style.min.css}" type="text/css" media="all"/>
+  <!--在此写入style-->
+  <style>
+
+  </style>
+</head>
+
+<body>
+<!-- header -->
+<header th:replace="common/nav::header(active='blog')"></header>
+<!-- main -->
+
+<!-- blog -->
+<div class="article he-codes">
+  <!-- blog content -->
+  <div class="blog-cont pt-5">
+    <h3 class="title text-center text-bl font-weight-bold" th:text="${article.title}"></h3>
+    <div class="container pt-5">
+      <div class="row pt-2">
+        <!-- //content -->
+        <div id="post-content" class="post-content" itemprop="articleBody">
+          <p th:utext="${article.content}">
+
+          </p>
+        </div>
+        <!-- //content -->
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- //blog content -->
+
+<!-- //blog -->
+<!--footer-->
+<footer th:replace="common/nav::footer"></footer>
+<!--<script th:src="@{/js/highlight.min.js}"></script>-->
+<!--<script th:src="@{/plugins/editormd/jquery.min.js}"></script>-->
+</body>
+
+</html>

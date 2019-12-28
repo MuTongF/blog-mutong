@@ -1,7 +1,15 @@
 package com.mutong.controller.router;
 
+import com.mutong.entity.article.BlogArticleWithBLOBs;
+import com.mutong.entity.article.BlogCategory;
+import com.mutong.entity.article.BlogTag;
+import com.mutong.service.ArticleService;
+import com.mutong.service.CategoryService;
+import com.mutong.service.TagService;
 import io.swagger.annotations.Api;
+import java.util.List;
 import javax.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,12 +36,32 @@ public class BackRouterController {
   }
 
   @GetMapping("/article/list")
-  public String articleList() {
+  public String articleList(Model model) {
+    List<BlogTag> tags = tagService.selectAll();
+    List<BlogCategory> categories = categoryService.selectAll();
+    model.addAttribute("tags", tags);
+    model.addAttribute("categories", categories);
     return "views/back/article/list";
   }
 
+  @Autowired
+  private TagService tagService;
+  @Autowired
+  private CategoryService categoryService;
+  @Autowired
+  private ArticleService articleService;
   @GetMapping("/article/add")
-  public String addArtPage(Integer id, Model model) {
+  public String addArtPage(String id, Model model) {
+    List<BlogTag> tags = tagService.selectAll();
+    List<BlogCategory> categories = categoryService.selectAll();
+
+    if (id != null) {
+      Long idd = new Long(id);
+      BlogArticleWithBLOBs article = articleService.selectById(idd);
+      model.addAttribute("article", article);
+    }
+    model.addAttribute("tags", tags);
+    model.addAttribute("categories", categories);
     return "views/back/article/add";
   }
 

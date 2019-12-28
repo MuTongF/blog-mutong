@@ -1,430 +1,101 @@
-<!DOCTYPE HTML>
-
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
-<!--引入公共的js和css-->
 <head th:replace="common/layout :: common_head(~{::style},~{::link})">
-  <!--在此引入css样式表-->
-  <link/>
-  <!--在此写入style-->
-  <style>
+	<!--在此引入css样式表-->
+	<link/>
+	<!--在此写入style-->
+	<style>
+		.page-div {
+			width: 100%;
+			padding-top: 20px;
+		}
 
-  </style>
+		.page-div a {
+			text-decoration: none;
+			font-size: 30px;
+			color: #686868;
+		}
+
+		.page-div i {
+			font-size: 30px;
+		}
+
+		.page-div a:hover {
+			color: #fb5353;
+		}
+
+		.page-div .prev {
+			float: left;
+			margin-left: 40px;
+		}
+
+		.article {
+			padding-top: 4px;
+		}
+
+		.page-div .next {
+			float: right;
+			margin-right: 40px;
+		}
+	</style>
 </head>
 
-
-
-    <body>
-
-    
-
-    	<!-- header -->
-
-      <header th:replace="common/nav::header(active='博客')"></header>
-      <!-- header -->
-
-        <!-- main -->
-
-        <main role="main-inner-wrapper" class="container">
-
-        	
-
-            <div class="row">
-
-            
-
-            	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
-
-                	<article role="pge-title-content" class="blog-header">
-
-                    	<header>
-
-                        	<h2><span>News</span> Updates from studio</h2>
-
-                        </header>
-
-                        <p>Get all information about our studio from latest news posts & updates page.</p>
-
-                    </article>
-
-                    <ul class="grid-lod effect-2" id="grid">
-
-                        <li>
-
-                            <section class="blog-content">
-
-                            	<a href="blog-details.html">
-
-                                <figure>
-
-                                    <div class="post-date">
-
-                                        <span>24</span> July 2016
-
-                                    </div>
-
-                                    <img src="images/blog-images/blog-2.jpg" alt="" class="img-responsive"/>
-
-                                </figure>
-
-                                </a>
-
-                                <article>
-
-                                    This is a sample news post title content or sample post heading.
-
-                                </article>
-
-                            </section>
-
-                        </li>
-
-                        <li>
-
-                            <section class="blog-content">
-
-                            	<a href="blog-details.html">	
-
-                                <figure>
-
-                                    <div class="post-date">
-
-                                        <span>24</span> July 2016
-
-                                    </div>
-
-                                    <img src="images/blog-images/blog-4.jpg" alt="" class="img-responsive"/>
-
-                                </figure>
-
-                                </a>
-
-                                <article>
-
-                                    This is a sample news post title content or sample post heading.
-
-                                </article>
-
-                            </section>
-
-                        </li>
-
-                        <li>
-
-                        	<section class="blog-content">
-
-                            	<a href="blog-details.html">
-
-                                <figure>
-
-                                    <div class="post-date">
-
-                                        <span>24</span> July 2016
-
-                                    </div>
-
-                                    <img src="images/blog-images/blog-2.jpg" alt="" class="img-responsive"/>
-
-                                </figure>
-
-                                </a>
-
-                                <article>
-
-                                    This is a sample news post title content or sample post heading.
-
-                                </article>
-
-                            </section>
-
-                        </li>
-
-                        <li>
-
-                        	<section class="blog-content">
-
-                            	<a href="blog-details.html">
-
-                                <figure>
-
-                                    <div class="post-date">
-
-                                        <span>24</span> July 2016
-
-                                    </div>
-
-                                    <img src="images/blog-images/blog-4.jpg" alt="" class="img-responsive"/>
-
-                                </figure>
-
-                                </a>
-
-                                <article>
-
-                                    This is a sample news post title content or sample post heading.
-
-                                </article>
-
-                            </section>
-
-                        </li>
-
-                        <li>
-
-                        	<section class="blog-content">
-
-                            	<a href="blog-details.html">
-
-                                <figure>
-
-                                    <div class="post-date">
-
-                                        <span>24</span> July 2016
-
-                                    </div>
-
-                                    <img src="images/blog-images/blog-2.jpg" alt="" class="img-responsive"/>
-
-                                </figure>
-
-                                </a>
-
-                                <article>
-
-                                    This is a sample news post title content or sample post heading.
-
-                                </article>
-
-                            </section>
-
-                        </li>
-
-                    </ul>
-
-                </div>
-
-                
-
-                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-
-                	<ul class="grid-lod effect-2" id="grid">
-
-                		<li>
-
-                        	<section class="blog-content">
-
-                            	<a href="blog-details.html">
-
-                                <figure>
-
-                                    <div class="post-date">
-
-                                        <span>24</span> July 2016
-
-                                    </div>
-
-                                    <img src="images/blog-images/blog-1.jpg" alt="" class="img-responsive"/>
-
-                                </figure>
-
-                                </a>
-
-                                <article>
-
-                                    This is a sample news post title content or sample post heading.
-
-                                </article>
-
-                            </section>
-
-                    	</li>
-
-                    	<li>
-
-                   		 	<section class="blog-content">
-
-                            	<a href="blog-details.html">
-
-                                <figure>
-
-                                    <div class="post-date">
-
-                                        <span>24</span> July 2016
-
-                                    </div>
-
-                                    <img src="images/blog-images/blog-3.jpg" alt="" class="img-responsive"/>
-
-                                </figure>
-
-                                </a>
-
-                                <article>
-
-                                    This is a sample news post title content or sample post heading.
-
-                                </article>
-
-                            </section>
-
-                    	</li>
-
-                        <li>
-
-                    		<section class="blog-content">
-
-                            	<a href="blog-details.html">
-
-                                <figure>
-
-                                    <div class="post-date">
-
-                                        <span>24</span> July 2016
-
-                                    </div>
-
-                                    <img src="images/blog-images/blog-5.jpg" alt="" class="img-responsive"/>
-
-                                </figure>
-
-                                </a>
-
-                                <article>
-
-                                    This is a sample news post title content or sample post heading.
-
-                                </article>
-
-                            </section>
-
-                    	</li>
-
-                         <li>
-
-                            <section class="blog-content">
-
-                            	<a href="blog-details.html">
-
-                                <figure>
-
-                                    <div class="post-date">
-
-                                        <span>24</span> July 2016
-
-                                    </div>
-
-                                    <img src="images/blog-images/blog-1.jpg" alt="" class="img-responsive"/>
-
-                                </figure>
-
-                                </a>
-
-                                <article>
-
-                                    This is a sample news post title content or sample post heading.
-
-                                </article>
-
-                            </section>
-
-                        </li>
-
-                        <li>
-
-                            <section class="blog-content">
-
-                            	<a href="blog-details.html">
-
-                                <figure>
-
-                                    <div class="post-date">
-
-                                        <span>24</span> July 2016
-
-                                    </div>
-
-                                    <img src="images/blog-images/blog-3.jpg" alt="" class="img-responsive"/>
-
-                                </figure>
-
-                                </a>
-
-                                <article>
-
-                                    This is a sample news post title content or sample post heading.
-
-                                </article>
-
-                            </section>
-
-                        </li>
-
-                        <li>
-
-                        	<section class="blog-content">
-
-                            	<a href="blog-details.html">
-
-                                <figure>
-
-                                    <div class="post-date">
-
-                                        <span>24</span> July 2016
-
-                                    </div>
-
-                                    <img src="images/blog-images/blog-5.jpg" alt="" class="img-responsive"/>
-
-                                </figure>
-
-                                </a>
-
-                                <article>
-
-                                    This is a sample news post title content or sample post heading.
-
-                                </article>
-
-                            </section>
-
-                        </li>
-
-                    </ul>
-
-                </div>
-
-                
-
-                
-
-                
-
-               
-
-                
-
-                
-
-            </div>
-
-        </main>
-
-    	<!-- main -->
-
-        <!-- footer -->
-
-      <footer th:replace="common/nav::footer"></footer>
-      <!-- footer -->
-
-
-      <script src="js/effects/AnimOnScroll.js" th:src="@{/blog/js/effects/AnimOnScroll.js}"
-              type="text/javascript"></script>
-
-      <script src="js/effects/modernizr.custom.js"
-              th:src="@{/blog/js/effects/modernizr.custom.js}"></script>
-
-
-
-    </body>
+<body>
+<!-- header -->
+<header th:replace="common/nav::header(active='blog')"></header>
+<!-- main -->
+
+<!-- blog -->
+<div class="blog he-codes">
+	<!-- blog content -->
+	<div class="blog-cont pt-5">
+		<h3 class="title text-center text-bl font-weight-bold">我的博客</h3>
+		<div class="container pt-5">
+			<div class="row pt-2">
+				<!-- //blog grid -->
+				<div class="col-lg-4 col-md-6 mt-md-0 mt-5 article" th:each="art:${list}">
+					<div class="card border-0 med-blog">
+						<div class="card-header p-0">
+							<a href="#">
+								<img class="card-img-bottom" th:class="${art.cover!=null?'card-img-bottom':'card-img-none'}"
+										 th:src="${art.cover!=null?art.cover:''}" alt="Card image cap">
+							</a>
+						</div>
+						<div class="card-body border border-top-0">
+							<div class="mb-3">
+								<h2 class="blog-title card-title font-weight-bold m-0">
+									<a href="#" th:text="${art.title}"></a>
+								</h2>
+								<div class="blog_w3icon">
+									<span th:utext='${timeUtil.GetStringDate(art.creatTime, "yyyy MM dd - EEEE")}'></span>
+								</div>
+							</div>
+							<p class="mb-4" th:text="${art.content}"></p>
+							<a href="#" th:href="${'/article/'+art.id}" class="blog-btn btn">查看更多</a>
+						</div>
+					</div>
+				</div>
+				<!-- //blog grid -->
+				<div class="page-div">
+					<a class="prev" href="#" th:if="${page>1}">
+						<i class="layui-icon layui-icon-prev"></i>上一页
+					</a>
+					<a class="next" href="#" th:if="${page<pageCount}">下一页
+						<i class="layui-icon layui-icon-next"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- //blog content -->
+
+<!-- //blog -->
+<!--footer-->
+<footer th:replace="common/nav::footer"></footer>
+
+</body>
 
 </html>

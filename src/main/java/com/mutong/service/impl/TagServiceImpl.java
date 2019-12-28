@@ -19,6 +19,10 @@ public class TagServiceImpl implements TagService {
 
   @Override
   public LayuiJson insert(BlogTag tag) {
+    BlogTag blogTag = selectByName(tag.getName());
+    if (blogTag != null) {
+      return LayuiJson.newErrorInstance("此标签已存在");
+    }
 
     return (tag.getId() == null) ? ((blogTagMapper.insertSelective(tag) == 1) ? LayuiJson
         .newInstance("保存成功")
@@ -45,7 +49,12 @@ public class TagServiceImpl implements TagService {
   }
 
   @Override
+  public List<BlogTag> selectAll() {
+    return blogTagMapper.selectAll(null);
+  }
+
+  @Override
   public BlogTag selectByName(String name) {
-    return null;
+    return blogTagMapper.selectByName(name);
   }
 }

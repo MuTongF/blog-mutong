@@ -3,8 +3,10 @@ package com.mutong.util;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import org.springframework.stereotype.Component;
 
 /*时间工具类*/
+@Component
 public class TimeUtil {
 
     /**

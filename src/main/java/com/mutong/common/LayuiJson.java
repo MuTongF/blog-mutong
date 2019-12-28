@@ -127,6 +127,16 @@ public class LayuiJson {
         return layuiJson;
     }
 
+    public LayuiJson(boolean flag, Integer code, String msg, Object data) {
+        this.flag = flag;
+        this.code = code;
+        this.msg = msg;
+        this.data = data;
+    }
+
+    public LayuiJson() {
+    }
+
     @Override
     public String toString() {
         return "LayuiJson{" +

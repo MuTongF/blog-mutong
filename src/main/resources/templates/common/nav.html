@@ -7,72 +7,37 @@
 <body>
 <!--头部导航-->
 <!-- header -->
-
-<header role="header" th:fragment="header">
-  <div class="container">
-
-    <!-- logo -->
-
+<header th:fragment="header">
+  <div class="logo blog-clr ml-sm-4 ml-2 mt-3">
     <h1><a href="index.html" th:href="@{/}" title="avana LLC"><img src="blog/images/logo.png"
                                                                    th:src="@{/blog/images/logo.png}"
                                                                    title="沐瞳的博客"
                                                                    alt="沐瞳的博客"/></a></h1>
-
-    <!-- logo -->
-
-    <!-- nav -->
-
-    <nav role="header-nav" class="navy">
-      <ul>
-        <li class="nav-active" th:class="${active eq '首页'}?'nav-active':''">
-          <a href="/"
-             th:href="@{/}"
-             title="Work">首页</a>
-        </li>
-
-        <li th:class="${active eq '关于我'}?'nav-active':''">
-          <a href="about" th:href="@{/about}"
-             title="About">关于我</a></li>
-
-        <li th:class="${active eq '博客'}?'nav-active':''">
-          <a href="blog" th:href="@{/blog}"
-             title="Blog">博客</a></li>
-
-        <li th:class="${active eq '联系我'}?'nav-active':''">
-          <a href="contact" th:href="@{/contact}"
-             title="Contact">联系我</a>
-        </li>
-      </ul>
-    </nav>
-
-    <!-- nav -->
-
   </div>
+  <!-- menu -->
+  <ul id="menu">
+    <li>
+      <input id="check02" type="checkbox" name="menu"/>
+      <label for="check02"><span class="fa fa-bars" aria-hidden="true"></span></label>
+      <ul class="submenu">
+        <li><a href="/" th:class="${active eq 'index'?'active':''}">首页</a></li>
+        <li><a href="/blog" th:class="${active eq 'blog'?'active':''}">我的博客</a></li>
+        <!--<li><a href="team.html" th:class="${active eq 'team'?'active':''}">我的团队</a></li>-->
+        <!--<li><a href="services.html" th:class="${active eq 'services'?'active':''}">业务</a></li>-->
+        <!--<li><a href="gallery.html" th:class="${active eq 'gallery'?'active':''}">相册</a></li>-->
+        <!--<li><a href="about.html" th:class="${active eq 'about'?'active':''}">关于我</a></li>-->
+        <!--<li><a href="contact.html" th:class="${active eq 'contact'?'active':''}">联系我</a></li>-->
+      </ul>
+    </li>
+  </ul>
+  <!-- //menu -->
 </header>
+<!-- //header -->
+
 
 <!-- footer -->
 
 <footer role="footer" th:fragment="footer">
-
-  <!-- logo -->
-
-  <h1><a href="index.html" th:href="@{/}" title="avana LLC"><img src="blog/images/logo.png"
-                                                                 th:src="@{/blog/images/logo.png}"
-                                                                 title="沐瞳的博客"
-                                                                 alt="沐瞳的博客"/></a></h1>
-
-  <!-- logo -->
-
-  <!-- nav -->
-
-  <nav role="footer-nav">
-    <ul>
-      <li><a href="#" th:href="@{/}" title="Work">首页</a></li>
-      <li><a href="about.html" th:href="@{/about}" title="About">关于我</a></li>
-      <li><a href="blog.html" th:href="@{/blog}" title="Blog">博客</a></li>
-      <li><a href="contact.html" th:href="@{/contact}" title="Contact">联系我</a></li>
-    </ul>
-  </nav>
 
 
   <ul role="social-icons">
@@ -83,14 +48,28 @@
     <li><a href="http://weibo.com/u/3247776781" target="_blank" title="微博"><i class="fa fa-weibo"
                                                                               aria-hidden="true"></i></a>
     </li>
-    <li><a href="https://space.bilibili.com/27404357" title="BiLiBiLi" target="_blank">
-      <img th:src="@{/blog/images/bilibili.png}" width="30"
-           height="30"
-           style="margin-bottom:5px;display: inline-block"/></a>
+    <li>
+      <a href="https://space.bilibili.com/27404357" title="BiLiBiLi" target="_blank">
+        <img th:src="@{/blog/images/bilibili.png}" width="25"
+             height="25"
+             style="display: inline-block;margin-bottom: 5.6px"/>
+      </a>
     </li>
 
   </ul>
-  <p class="copy-right">&copy; 2019 avana LLC.. 沐瞳</p>
+
+  <nav role="header-nav" class="navy">
+
+    <ul>
+      <li class="nav-active" th:class="${active eq '首页'}?'nav-active':''">
+        友情链接:
+      </li>
+      <li class="nav-active" th:class="${active eq '首页'}?'nav-active':''">
+        <a href="http://www.qianhongsci.com/" target="_blank"
+           title="李五一的博客">李五一的博客</a>
+      </li>
+    </ul>
+  </nav>
 </footer>
 
 

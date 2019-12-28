@@ -218,41 +218,40 @@
     index: 'lib/index' //主入口模块
   }).use(['index', 'view'], function () {
     $ = layui.$;
-    var index = layui.index;
     checkedNav();
     $("#LAY_app_tabsheader").click(function () {
       checkedNav();
     });
-    $("*[lay-href]").click(function () {
+    /*$("*[lay-href]").click(function () {
       addMao($(this).attr("lay-href"))
-    });
+    });*/
 
-    window.addEventListener("hashchange", function (event) {
+    /*window.addEventListener("hashchange", function (event) {
       loadPage();
-    });
+    });*/
 
-    function loadPage() {
-      console.log('重新加载...');
-      /*获取锚点*/
-      var thisUrl = location.hash.substring(1);
+    /* function loadPage() {
+       console.log('重新加载...');
+       /!*获取锚点*!/
+       var thisUrl = location.hash.substring(1);
 
-      var href_url = $(".layadmin-iframe");
-      var url = href_url.attr("lay-data");
+       var href_url = $(".layadmin-iframe");
+       var url = href_url.attr("lay-data");
 
-      if (thisUrl) {
-        var headerNav = $("#LAY_app_tabsheader .layui-this");
+       if (thisUrl) {
+         var headerNav = $("#LAY_app_tabsheader .layui-this");
 
-        if (headerNav.attr("lay-attr") == url) {//如果不是首页
-          /*关闭其他菜单*/
-          $(".layui-nav-itemed").removeClass("layui-nav-itemed");
+         if (headerNav.attr("lay-attr") == url) {//如果不是首页
+           /!*关闭其他菜单*!/
+           $(".layui-nav-itemed").removeClass("layui-nav-itemed");
 
-          var leftNav = $(".layui-nav [lay-href='" + thisUrl + "']");
-          index.openTabsPage(thisUrl, leftNav.text());
-        }
-      } else {
-        console.log("没有锚点")
-      }
-    }
+           var leftNav = $(".layui-nav [lay-href='" + thisUrl + "']");
+           index.openTabsPage(thisUrl, leftNav.text());
+         }
+       } else {
+         console.log("没有锚点")
+       }
+     }*/
 
     function checkedNav() {
 

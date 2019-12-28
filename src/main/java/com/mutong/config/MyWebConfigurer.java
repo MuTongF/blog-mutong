@@ -1,5 +1,6 @@
 package com.mutong.config;
 
+import com.mutong.interceptor.BaseInterceptor;
 import com.mutong.interceptor.SessionInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,6 +15,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 /** 1. 配置静态资源访问路径 2. 配置拦截器 */
 public class MyWebConfigurer implements WebMvcConfigurer {
   @Autowired private SessionInterceptor sessionInterceptor;
+  @Autowired
+  private BaseInterceptor baseInterceptor;
 
   @Value("${upload.filePath}")
   private String filePath;
@@ -40,6 +43,9 @@ public class MyWebConfigurer implements WebMvcConfigurer {
   @Override
   public void addInterceptors(InterceptorRegistry registry) {
     /** 注册拦截器 addPathPatterns:>:拦截的路径 excludePathPatterns:>:取消拦截的路径 */
+    /*基础拦截器*/
+    registry.addInterceptor(baseInterceptor);
+    /*session拦截器*/
     if (!action.equals("dev")) {
       registry
           .addInterceptor(sessionInterceptor)

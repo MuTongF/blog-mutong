@@ -10,7 +10,7 @@
     <result column="author" property="author" jdbcType="VARCHAR"/>
     <result column="category" property="category" jdbcType="VARCHAR"/>
     <result column="tag" property="tag" jdbcType="VARCHAR"/>
-    <result column="state" property="state" jdbcType="INTEGER"/>
+    <result column="status" property="status" jdbcType="INTEGER"/>
     <result column="creat_time" property="creatTime" jdbcType="TIMESTAMP"/>
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
     <result column="type" property="type" jdbcType="INTEGER"/>
@@ -23,7 +23,7 @@
     <result column="content_md" property="contentMd" jdbcType="LONGVARCHAR"/>
   </resultMap>
   <sql id="Base_Column_List">
-    id, user_id, title, cover, author, category, tag, state, creat_time, update_time, 
+    id, user_id, title, cover, author, category, tag, status, creat_time, update_time, 
     type, views, allow_comment
   </sql>
   <sql id="Blob_Column_List">
@@ -32,20 +32,26 @@
   <update id="addViews">
     update blog_article set  views=views+1 where id = #{id}
   </update>
-  <select id="selectAll" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long">
-    select
-    <include refid="Base_Column_List"/>
-    ,
-    <include refid="Blob_Column_List"/>
-    from blog_article
+  <select id="select" resultMap="ResultMapWithBLOBs" parameterType="map">
+    select article.*,category.name categoryName,tag.name tagName
+    from blog_article article
+    left join blog_category category on article.category = category.id
+    left join blog_tag tag on article.tag = tag.id
     <where>
-      <if test="article.title!=null">
-        title like CONCAT('%',#{article.title},'%')
-      </if>
-      <if test="article.title!=null">
-        and content like CONCAT('%',#{article.content},'%')
+      <if test="param!=null">
+        <if test="param.content!=null and param.content!=''">
+          and CONCAT(IFNULL(content,''),IFNULL(title,''),IFNULL(author,''),IFNULL(id,'')) LIKE
+          CONCAT('%',#{param.content},'%')
+        </if>
+        <if test="param.category!=null and param.category!=''">
+          and category = #{param.category}
+        </if>
+        <if test="param.tag!=null and param.tag!=''">
+          and category = #{param.tag}
+        </if>
       </if>
     </where>
+    order by update_time desc,creat_time desc
   </select>
   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long">
     select
@@ -62,13 +68,13 @@
   <insert id="insert" parameterType="com.mutong.entity.article.BlogArticleWithBLOBs">
     insert into blog_article (id, user_id, title, 
       cover, author, category, 
-      tag, state, creat_time, 
+      tag, status, creat_time, 
       update_time, type, views, 
       allow_comment, content, content_md
       )
     values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, 
       #{cover,jdbcType=VARCHAR}, #{author,jdbcType=VARCHAR}, #{category,jdbcType=VARCHAR}, 
-      #{tag,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, #{creatTime,jdbcType=TIMESTAMP}, 
+      #{tag,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{creatTime,jdbcType=TIMESTAMP}, 
       #{updateTime,jdbcType=TIMESTAMP}, #{type,jdbcType=INTEGER}, #{views,jdbcType=BIGINT}, 
       #{allowComment,jdbcType=BIT}, #{content,jdbcType=LONGVARCHAR}, #{contentMd,jdbcType=LONGVARCHAR}
       )
@@ -97,8 +103,8 @@
       <if test="tag != null">
         tag,
       </if>
-      <if test="state != null">
-        state,
+      <if test="status != null">
+        status,
       </if>
       <if test="creatTime != null">
         creat_time,
@@ -144,8 +150,8 @@
       <if test="tag != null">
         #{tag,jdbcType=VARCHAR},
       </if>
-      <if test="state != null">
-        #{state,jdbcType=INTEGER},
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
       </if>
       <if test="creatTime != null">
         #{creatTime,jdbcType=TIMESTAMP},
@@ -192,8 +198,8 @@
       <if test="tag != null">
         tag = #{tag,jdbcType=VARCHAR},
       </if>
-      <if test="state != null">
-        state = #{state,jdbcType=INTEGER},
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
       </if>
       <if test="creatTime != null">
         creat_time = #{creatTime,jdbcType=TIMESTAMP},
@@ -228,7 +234,7 @@
       author = #{author,jdbcType=VARCHAR},
       category = #{category,jdbcType=VARCHAR},
       tag = #{tag,jdbcType=VARCHAR},
-      state = #{state,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
       creat_time = #{creatTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       type = #{type,jdbcType=INTEGER},
@@ -246,7 +252,7 @@
       author = #{author,jdbcType=VARCHAR},
       category = #{category,jdbcType=VARCHAR},
       tag = #{tag,jdbcType=VARCHAR},
-      state = #{state,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
       creat_time = #{creatTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       type = #{type,jdbcType=INTEGER},

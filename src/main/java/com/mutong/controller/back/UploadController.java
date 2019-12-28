@@ -37,6 +37,7 @@ public class UploadController {
     @PostMapping("/layuiImage")
     public Map<String, Object> layuiImage(@RequestParam("file") MultipartFile img, HttpServletRequest request) {
         String httpPath = request.getScheme()+"://"+ request.getServerName()+":"+request.getServerPort();
+        httpPath = request.getHeader("Origin");
 
         Map<String, Object> map = new HashMap<>();
         if (img == null) {
@@ -66,8 +67,9 @@ public class UploadController {
     @ApiIgnore
     @PostMapping("/editormdImage")
     public Map<String,Object> editormdImage(@RequestParam("editormd-image-file") MultipartFile img, HttpServletRequest request) {
-        String httpPath = request.getScheme()+"://"+ request.getServerName()+":"+request.getServerPort();
 
+        String httpPath = request.getScheme()+"://"+ request.getServerName()+":"+request.getServerPort();
+        httpPath = request.getHeader("Origin");
         Map<String, Object> map = new HashMap<>();
         if (img == null) {
             map.put("success", 9000);

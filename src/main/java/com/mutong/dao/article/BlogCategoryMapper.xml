@@ -9,15 +9,21 @@
   <sql id="Base_Column_List">
     id, name
   </sql>
-  <select id="selectAll" resultMap="BaseResultMap" parameterType="java.lang.Long">
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="map">
     select
     <include refid="Base_Column_List"/>
     from blog_category
     <where>
-      <if test="category.name!=null">
-        name like CONCAT('%',#{category.name},'%')
+      <if test="name!=null">
+        name like CONCAT('%',#{name},'%')
       </if>
     </where>
+  </select>
+  <select id="selectByName" resultMap="BaseResultMap" parameterType="string">
+    select
+    <include refid="Base_Column_List"/>
+    from blog_category
+    where name = #{name}
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
     select

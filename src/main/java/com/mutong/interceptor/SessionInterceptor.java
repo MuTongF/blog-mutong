@@ -8,6 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Component
 public class SessionInterceptor implements HandlerInterceptor {
+
     // 目标方法执行之前
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -27,7 +28,6 @@ public class SessionInterceptor implements HandlerInterceptor {
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-
     }
 
     @Override

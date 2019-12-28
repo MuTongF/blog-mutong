@@ -14,6 +14,11 @@
   <link rel="stylesheet" href="../../../layuiadmin/style/admin.css"
         th:href="@{/layuiadmin/style/admin.css}" media="all">
   <link rel="stylesheet" href="editormd/css/editormd.min.css" th:href="@{/plugins/editormd/css/editormd.min.css}"/>
+  <style>
+    .layui-select-title input {
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
 
@@ -24,17 +29,19 @@
         <div class="layui-card-header"><span th:text="${article!=null?'修改文章':'发布文章'}"></span></div>
         <div class="layui-card-body" pad15>
 
-          <div class="layui-form" lay-filter="">
-            <input th:if="${article!=null}" th:value="${article.id}"/>
+          <div class="layui-form" lay-filter="layui-form">
+            <input th:if="${article!=null}" th:value="${article.id}" hidden="hidden" name="id"/>
 
             <div class="layui-form-item">
               <div class="layui-inline">
                 <label class="layui-form-label">分类</label>
                 <div class="layui-input-inline">
-                  <select name="category" lay-verify="">
+                  <select name="category" lay-verify="" style="text-align: left">
                     <option value="">请选择</option>
-                    <option value="0">前端</option>
-                    <option value="1">后端</option>
+                    <option th:each="categorie:${categories}" th:value="${categorie.id}"
+                            th:selected="${article!=null && article.category==categorie.id}">
+                      <span th:text="${categorie.name}"></span>
+                    </option>
                   </select>
                 </div>
               </div>
@@ -43,8 +50,9 @@
                 <div class="layui-input-inline">
                   <select name="tag" lay-verify="">
                     <option value="">请选择</option>
-                    <option value="0">美食</option>
-                    <option value="1">页面</option>
+                    <option th:each="tag:${tags}" th:value="${tag.id}">
+                      <span th:text="${tag.name}"></span>
+                    </option>
                   </select>
                 </div>
               </div>
@@ -53,7 +61,7 @@
                 <div class="layui-input-inline">
                   <select name="type" lay-verify="">
                     <option value="0" selected>原创</option>
-                    <option value="1" >转载</option>
+                    <option value="1">转载</option>
                   </select>
                 </div>
               </div>
@@ -102,7 +110,12 @@
               <div class="layui-input-block">
                 <div id="myeditor" >
                   <!-- 富文本编辑器 -->
-                  <div id="editormd"></div>
+                  <div id="editormd">
+                    <textarea class="editormd-markdown-textarea" placeholder="Enjoy Markdown! coding now..."
+                              name="test-editormd-markdown-doc" style="display: none;"
+                              th:text="${article!=null?article.contentMd:''}"></textarea>
+                    <textarea class="editormd-html-textarea" name="test-editormd-html-code"></textarea>
+                  </div>
                 </div>
               </div>
             </div>
@@ -140,7 +153,15 @@
     index: 'lib/index' //主入口模块
   }).use(['index', 'jquery', 'layer','set','article'], function () {
     var layer = layui.layer
-        , $= layui.jquery;
+        , form = layui.form,
+        $ = layui.jquery;
+
+    form.val("layui-form", {
+      "tag": "[[${article!=null?article.tag:''}]]"
+      , "category": "[[${article!=null?article.category:''}]]"
+      , "type": "[[${article!=null?article.type:'0'}]]"
+      , "allowComment": "[[${(article!=null)?(article.allowComment)?'1':'0':'1'}]]"
+    });
 
     var testEditor;
     testEditor = editormd("editormd", {
@@ -191,17 +212,14 @@
       }
     });
 
-
     // 获取markdown源码
     function getMarkdownContent(){
       var content = testEditor.getMarkdown();
-      console.log(content);
       return content;
     }
     //获取html
     function getHtmlContent() {
       var content = testEditor.getHTML();
-      console.log(content);
       return content;
     }
 

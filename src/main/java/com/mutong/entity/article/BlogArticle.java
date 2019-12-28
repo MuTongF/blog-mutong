@@ -30,14 +30,16 @@ public class BlogArticle {
     /* 分类 */
 
     private String category;
+    private String categoryName;
 
     /* 标签 */
 
     private String tag;
+    private String tagName;
 
     /* 状态:0-草稿;1-发布 */
 
-    private Integer state;
+    private Integer status;
 
     /* 发布时间 */
 
@@ -58,6 +60,22 @@ public class BlogArticle {
     /* 评论权限 */
 
     private Boolean allowComment;
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    public String getTagName() {
+        return tagName;
+    }
+
+    public void setTagName(String tagName) {
+        this.tagName = tagName;
+    }
 
     public Long getId() {
         return id;
@@ -115,12 +133,12 @@ public class BlogArticle {
         this.tag = tag == null ? null : tag.trim();
     }
 
-    public Integer getState() {
-        return state;
+    public Integer getStatus() {
+        return status;
     }
 
-    public void setState(Integer state) {
-        this.state = state;
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public Date getCreatTime() {
