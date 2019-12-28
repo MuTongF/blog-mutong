@@ -648,7 +648,7 @@ h3.title:after {
     -o-background-size: cover;
     -moz-background-size: cover;
     -ms-background-size: cover;
-    min-height: 789px;
+    min-height: 420px;
 }
 
 .blog h3.title:after {
